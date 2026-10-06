@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidTrip(data) {
+      return data.destination is string && data.destination.size() > 0;
+    }
+
+    function isValidExpense(data) {
+      return data.amount is number && data.description is string;
+    }
+
+    match /trips/{tripId} {
+      allow read: if true;
+      allow create, update: if isValidTrip(request.resource.data);
+      allow delete: if true;
+
+      match /expenses/{expenseId} {
+        allow read: if true;
+        allow create, update: if isValidExpense(request.resource.data);
+        allow delete: if true;
+      }
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

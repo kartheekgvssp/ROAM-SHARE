@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "Trip": {
+      "title": "Trip",
+      "description": "Collaborative trip details, destination, dates, budget and settlement status",
+      "type": "object",
+      "properties": {
+        "destination": {
+          "type": "string",
+          "description": "Destination city or trip name"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Trip start date YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "Trip end date YYYY-MM-DD"
+        },
+        "budget": {
+          "type": "number",
+          "description": "Overall planned budget"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency code e.g. USD, EUR, INR"
+        },
+        "status": {
+          "type": "string",
+          "description": "Trip status: active or ended"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "Username or ID of trip creator"
+        },
+        "participants": {
+          "type": "array",
+          "description": "List of participant names"
+        },
+        "sheetId": {
+          "type": "string",
+          "description": "Google Sheet ID synced to this trip"
+        },
+        "sheetUrl": {
+          "type": "string",
+          "description": "Google Sheet URL"
+        },
+        "settlement": {
+          "type": "object",
+          "description": "Calculated settlement breakdown after trip ends"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        }
+      },
+      "required": ["destination", "status", "createdBy"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Individual daily expense record under a trip",
+      "type": "object",
+      "properties": {
+        "tripId": {
+          "type": "string",
+          "description": "Trip document ID"
+        },
+        "description": {
+          "type": "string",
+          "description": "Expense title or description"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Expense monetary amount"
+        },
+        "category": {
+          "type": "string",
+          "description": "Expense category (Food, Transport, Lodging, Activities, Shopping, Misc)"
+        },
+        "paidBy": {
+          "type": "string",
+          "description": "Participant name who paid"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of expense YYYY-MM-DD"
+        },
+        "splitWith": {
+          "type": "array",
+          "description": "List of participants sharing this expense"
+        },
+        "syncedToSheet": {
+          "type": "boolean",
+          "description": "Whether synced to Google Sheets"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes or tags"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        }
+      },
+      "required": ["tripId", "description", "amount", "category", "paidBy", "date"]
+    }
+  },
+  "firestore": {
+    "/trips/{tripId}": {
+      "schema": "Trip",
+      "description": "Collection of collaborative trips"
+    },
+    "/trips/{tripId}/expenses/{expenseId}": {
+      "schema": "Expense",
+      "description": "Subcollection of expenses associated with a specific trip"
+    }
+  }
+}

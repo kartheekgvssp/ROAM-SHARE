@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#064e3b" flood-opacity="0.35" />
+    </filter>
+  </defs>
+  <!-- Background with safe zone padding -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  
+  <!-- Icon Graphics -->
+  <g filter="url(#shadow)" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Suitcase / Trip Card -->
+    <rect x="120" y="160" width="272" height="232" rx="40" fill="#ffffff" fill-opacity="0.12" />
+    <path d="M196 160V124a28 28 0 0 1 28-28h64a28 28 0 0 1 28 28v36" />
+    <!-- Airplane symbol -->
+    <path d="M256 220l-40 46h-34l22 30-14 18 36-6 24 16 6-24 50-80z" fill="#ffffff" stroke="#ffffff" stroke-width="4" />
+    <!-- Sync / Split Arrows -->
+    <path d="M330 330h-64m0 0l22-22m-22 22l22 22" />
+    <path d="M182 330h40" />
+    <!-- Split Coin / Dot -->
+    <circle cx="340" cy="230" r="14" fill="#facc15" stroke="#facc15" stroke-width="2" />
+  </g>
+</svg>

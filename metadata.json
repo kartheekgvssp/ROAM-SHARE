@@ -1,0 +1,7 @@
+{
+  "name": "TripSync",
+  "description": "Real-time collaborative trip expense tracker, offline PWA, Google Sheets sync, and debt settlement calculator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
